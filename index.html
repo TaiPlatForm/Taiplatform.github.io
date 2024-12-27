@@ -444,263 +444,217 @@
                         <!--Portfolio Item Lab4-->
                         <div class="item col-lg-12 col-sm-6 Lab4">
 
-                            <header class="headerLab4">
-                                <a href="#"><i class="fas fa-arrow-left"></i> Home</a>
-                                <div class="header-title">MuleSoft 4.X Complete Guide For Beginners- Hands On Projects
+                            <headerLab4 class="headerLab4">
+                                <div class="headerLab4-left">
+                                    <a href="#" class="back-button">
+                                        <i class="fas fa-arrow-left"></i>
+                                        Home
+                                    </a>
+                                    <div class="headerLab4-title">
+                                        MuleSoft 4.X Complete Guide For Beginners- Hands On Projects
+                                    </div>
                                 </div>
-                                <div class="header-actions">
-                                    <button class="header-button"><i class="far fa-star"></i> Leave a rating</button>
-                                    <button class="header-button"><i class="fas fa-chart-line"></i> Your
-                                        progress</button>
-                                    <button class="header-button"><i class="fas fa-share"></i> Share</button>
-                                    <button class="header-button"><i class="fas fa-ellipsis-v"></i></button>
+                                <div class="headerLab4-actions">
+                                    <button class="headerLab4-button">
+                                        <i class="far fa-star"></i>
+                                        Leave a rating
+                                    </button>
+                                    <button class="headerLab4-button">
+                                        <i class="fas fa-chart-line"></i>
+                                        Your progress
+                                    </button>
+                                    <button class="headerLab4-button">
+                                        <i class="fas fa-share"></i>
+                                        Share
+                                    </button>
+                                    <button class="headerLab4-button">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
                                 </div>
-                            </header>
-
+                            </headerLab4>
+                        
                             <div class="main-container">
                                 <div class="content-area">
                                     <div class="video-container">
-                                        <div class="video-placeholder">
-                                            <i class="fas fa-play-circle fa-3x"></i>
+                                        <iframe id="player" 
+                                                src="https://www.youtube.com/embed/GOzKi6VEib4?enablejsapi=1" 
+                                                title="YouTube video player"
+                                                frameborder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                                allowfullscreen
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;">
+                                        </iframe>
+                                        
+                                        <div class="video-overlay" id="videoOverlay">
+                                            <div class="play-button-container">
+                                                <i class="fas fa-play-circle play-button"></i>
+                                            </div>
                                         </div>
                                     </div>
-
+                        
+                                    
                                     <div class="tabs">
-                                        <a href="#" class="tab-link active" data-target="overview">Overview</a>
-                                        <a href="#" class="tab-link" data-target="qa">Q&A</a>
-                                        <a href="#" class="tab-link" data-target="notes">Notes</a>
-                                        <a href="#" class="tab-link" data-target="announcements">Announcements</a>
-                                        <a href="#" class="tab-link" data-target="reviews">Reviews</a>
-                                        <a href="#" class="tab-link" data-target="learning-tools">Learning tools</a>
+                                        <a href="#" class="tab active">Overview</a>
+                                        <a href="#" class="tab">Q&A</a>
+                                        <a href="#" class="tab">Notes</a>
+                                        <a href="#" class="tab">Announcements</a>
+                                        <a href="#" class="tab">Reviews</a>
+                                        <a href="#" class="tab">Learning tools</a>
                                     </div>
-
-                                    <div class="overview-content" id="overview-content">
-                                        <h2 class="course-overview-title">Upgraded with latest MuleSoft ESB versions,
-                                            Anypoint Platform, DataWeave, MUnit, DevOps, MCD Tests and Realtime Project
-                                        </h2>
-
-                                        <div class="course-stats">
-                                            <div class="stat-item">
-                                                <div class="rating">
-                                                    <span class="rating-number">4.6</span>
-                                                    <span class="star">★</span>
+                        
+                                    <div class="content">
+                                        <h1 class="course-title">
+                                            Upgraded with latest MuleSoft ESB versions, Anypoint Platform, DataWeave, MUnit, DevOps, MCD Tests and Realtime Project
+                                        </h1>
+                        
+                                        <div class="stats-container">
+                                            <div class="stats">
+                                                <div class="stat">
+                                                    <div class="stat-main">
+                                                        <span>4.6</span>
+                                                        <span class="star">★</span>
+                                                    </div>
+                                                    <div class="stat-label">4,705 ratings</div>
                                                 </div>
-                                                <div class="label">4,705 ratings</div>
+                                                <div class="stat">
+                                                    <div class="stat-main">26,379</div>
+                                                    <div class="stat-label">Students</div>
+                                                </div>
+                                                <div class="stat">
+                                                    <div class="stat-main">50.5 hours</div>
+                                                    <div class="stat-label">Total</div>
+                                                </div>
                                             </div>
-
-                                            <div class="stat-item">
-                                                <div class="student-count">26,379</div>
-                                                <div class="label">Students</div>
-                                            </div>
-
-                                            <div class="stat-item">
-                                                <div class="duration">50.5 hours</div>
-                                                <div class="label">Total</div>
-                                            </div>
-
-                                            <div class="last-updated">
-                                                Last updated November 2023 <br>
-                                                English, English (Auto), French (Auto), 5 more
+                                            
+                                            <div class="course-meta">
+                                                <div>Last updated November 2023</div>
+                                                <div>English, English [Auto], French [Auto], 5 more</div>
                                             </div>
                                         </div>
-
-                                        <div class="noidung">
-                                            <h2>What You'll Learn</h2>
+                        
+                                        <div class="learn-sectionLab4">
+                                            <h2>What you'll learn</h2>
                                             <div class="row">
                                                 <div class="column">
-
-                                                    <ul>
-                                                        <li>You will become an expert in Mule ESB, Anypoint Platform
-                                                            operations, MUnit, and DevOps with Mule.</li>
-                                                        <li>Step-by-step coding with detailed explanations.</li>
-                                                        <li>You are a student/customer should be able to setup mulesoft
-                                                            by your own for your organization.</li>
-                                                        <li>The course will be continuously updated with new topics from
-                                                            MuleSoft.</li>
+                                                    <ul class="learn-list">
+                                                        <li>You will become expert in Mule ESB, Anypoint platform operations, MUnit and DevOps with Mule.</li>
+                                                        <li>Step by step coding in detail explanation.</li>
+                                                        <li>You are a student/customer should be able to setup mulesoft by your own for your organization</li>
                                                         <li>You should be able to develop, design, manage projects.</li>
-                                                        <li>Mule Level 1, Level 2, and Integration Associate
-                                                            certifications are guaranteed.</li>
+                                                        <li>Mule Level 1, Level 2 and Integration Associate certifications are guarantee.</li>
                                                     </ul>
                                                 </div>
                                                 <div class="column">
-
-
-                                                    <ul>
-                                                        <li>This course teaches you Mule 4.x in depth, covering all
-                                                            phases of the Software Development Life Cycle (SDLC).</li>
-                                                        <li>You will feel real time hands on experience after finishing
-                                                            this course.</li>
-                                                        <li>The course will keep on added with new topics from mulesoft.
-                                                        </li>
-                                                        <li>One course destination to learn all the actions of real time
-                                                            project. </li>
-                                                        <li> Mule real time project of this course helps to you to deal
-                                                            with all real time project activities and makes you
-                                                            confident while you are working in real time.</li>
+                                                    <ul class="learn-list">
+                                                        <li>This course teaches you mule 4.x in depth including all the phases of SDLC.</li>
+                                                        <li>You will feel real time hands on experience after finishing this course.</li>
+                                                        <li>The course will keep on added with new topics from mulesoft.</li>
+                                                        <li>One course destination to learn all the actions of real time project.</li>
+                                                        <li>Mule real time project of this course helps to you to deal with all real time project activities.</li>
                                                     </ul>
                                                 </div>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
-
+                        
                                 <div class="sidebar">
-                                    <div class="sidebar-title">
-                                        <h2 class="course-title">Course Content</h2>
-                                        <button class="close-button">×</button>
-                                    </div>
-
-                                    <div class="sections">
-                                        <!-- Section 1 -->
-                                        <div class="course-content">
-
-                                            <div class="section active">
-                                                <div class="section-header">
-                                                    <span>Section 1: Introduction</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="lesson active">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">1. Introduction</div>
-                                                            <div class="lesson-duration">2min</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lesson">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">2. Integration introduction</div>
-                                                            <div class="lesson-duration">8min</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lesson">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">3. Mule API development life cycle
-                                                                and components</div>
-                                                            <div class="lesson-duration">4min</div>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="lesson">
-                                                        <i class="fas fa-file-alt"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">4. Course resources & documents
-                                                            </div>
-                                                            <div class="lesson-duration">1min</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="course-content">
+                                        <div class="content-headerLab4">
+                                            Course content
+                                            <span class="close-button">×</span>
+                                        </div>
+                        
+                                        <div class="lesson">
+                                            <div class="lesson-checkbox"></div>
+                                            <i class="fas fa-play-circle lesson-icon"></i>
+                                            <div class="lesson-content">
+                                                <div class="lesson-title">2. Integration introduction</div>
+                                                <div class="lesson-duration">8min</div>
                                             </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 2: Mule 4 installation set-up</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="lesson">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">test1</div>
-                                                            <div class="lesson-duration">1min</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="lesson">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">test2</div>
-                                                            <div class="lesson-duration">1min</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        </div>
+                        
+                                        <div class="lesson">
+                                            <div class="lesson-checkbox"></div>
+                                            <i class="fas fa-play-circle lesson-icon"></i>
+                                            <div class="lesson-content">
+                                                <div class="lesson-title">3. Mule API development life cycle and components</div>
+                                                <div class="lesson-duration">4min</div>
                                             </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 3: Mule basics - develop first mule app, run, debug,
-                                                        export & import mule app</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                                <div class="section-content">
-                                                    <div class="lesson">
-                                                        <i class="fas fa-play-circle"></i>
-                                                        <div class="lesson-info">
-                                                            <div class="lesson-title">test1</div>
-                                                            <div class="lesson-duration">1min</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        </div>
+                        
+                                        <div class="lesson">
+                                            <div class="lesson-checkbox"></div>
+                                            <i class="far fa-file-alt lesson-icon"></i>
+                                            <div class="lesson-content">
+                                                <div class="lesson-title">4. Course resources & documents</div>
+                                                <div class="lesson-duration">1min</div>
                                             </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 4: Mule basics - Mule events and mule message
-                                                        structure</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 5: Mule basics - Basic transformations</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 6: Mule rest-full services (database) as provider -
-                                                        simple use case to get started</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 7: DataWeave language - basics</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 8: Mule database module - first system api uhub
-                                                        (database) sapi...</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 9: Mule validation module and flow types</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 10: Mule error handling</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-                                            <div class="section">
-                                                <div class="section-header">
-                                                    <span>Section 11: Anypoint platform introduction & access
-                                                        management</span>
-                                                    <div class="caret"></div>
-                                                </div>
-                                            </div>
-
-
+                                            <button class="resources-button">
+                                                Resources
+                                                <i class="fas fa-chevron-down"></i>
+                                            </button>
+                                        </div>
+                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 2: Mule 4 installation set-up</div>
+                                            <div class="sectionLab4-info">0/2 | 21min</div>
+                                        </div>
+                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 3: Mule basics - develop first mule app, run, debug, export & import mule app</div>
+                                            <div class="sectionLab4-info">0/7 | 42min</div>
+                                        </div>
+                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 4: Mule basics - Mule events and mule message structure</div>
+                                            <div class="sectionLab4-info">0/12 | 1hr 17min</div>
+                                        </div>
+                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 5: Mule basics - Basic transformations</div>
+                                            <div class="sectionLab4-info">0/5 | 1hr 2min</div>
+                                        </div>
+                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 7: DataWeave language - basics</div>
+                                            <div class="sectionLab4-info">0/10 | 1hr 11min</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 8: Mule database module - first system api uhub (database) sapi...</div>
+                                            <div class="sectionLab4-info">0/9 | 1hr 15min</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 9: Mule validation module and flow types</div>
+                                            <div class="sectionLab4-info">0/7 | 57min</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 10: Mule error handling</div>
+                                            <div class="sectionLab4-info">0/11 | 2hr 22min</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 11: Anypoint platform introduction & access management</div>
+                                            <div class="sectionLab4-info">0/3 | 19min</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 12: Anypoint Platform - Design Center - Design API's Using RAML</div>
+                                            <div class="sectionLab4-info">0/6 | 1hr</div>
+                                        </div>
+                                        
+                                        <div class="sectionLab4-headerLab4">
+                                            <div class="sectionLab4-title">sectionLab4 13: Anypoint Platform - Design Center - Design Fragments Based API's Using...</div>
+                                            <div class="sectionLab4-info">0/9 | 57min</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        
+                           
 
                         </div>
                         <!--Portfolio Item Lab5-->
@@ -1126,7 +1080,7 @@
     <script src="js/main-demo.js"></script>
 
     <script src="Lab/Lab2.js"></script>
-
+    <script src="Lab/Lab4.js"></script>
 
     <script src="Lab/Lab5.js"></script>
 </body>
