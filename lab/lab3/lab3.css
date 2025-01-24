@@ -1,0 +1,275 @@
+
+        :root {
+            --bg-color: #e0e5ec;
+            --text-color: #333;
+            --shadow-color: #a3b1c6;
+            --highlight-color: #ffffff;
+            --primary-color: #4a90e2;
+        }
+
+        .dark-mode {
+            --bg-color: #2d3748;
+            --text-color: #e2e8f0;
+            --shadow-color: #1a202c;
+            --highlight-color: #4a5568;
+            --primary-color: #63b3ed;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .neumorphic {
+            background-color: var(--bg-color);
+            box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--highlight-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .neumorphic:hover {
+            box-shadow: 8px 8px 15px var(--shadow-color), -8px -8px 15px var(--highlight-color);
+        }
+
+        .toggle-btn {
+            background-color: var(--bg-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 6px var(--shadow-color), -3px -3px 6px var(--highlight-color);
+        }
+
+        .toggle-btn:hover {
+            box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--highlight-color);
+        }
+
+        .search-bar {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            background-color: var(--highlight-color);
+            color: var(--text-color);
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+        }
+
+        .upload-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .upload-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background-color: #3a7abd;
+        }
+
+        .documents {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(240px, 1fr)); /* Cố định chiều rộng tối thiểu */
+            gap: 20px;
+            justify-items: center; /* Căn giữa các cột */
+        }
+
+       
+        .document h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .document p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .document .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-right: 5px;
+
+            
+        }
+
+        .document .btn:hover {
+            background-color: #3a7abd;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--highlight-color);
+            margin-top: 20px;
+        }
+
+      
+        
+
+        @keyframes animatetop {
+            from {top: -300px; opacity: 0}
+            to {top: 0; opacity: 1}
+        }
+
+       
+
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.5;
+            animation: float 15s infinite ease-in-out;
+        }
+
+      
+        /* Thêm các style mới cho dropdown và hiệu ứng hover */
+.search-bar select {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    margin-right: 10px;
+}
+
+
+
+/* Thêm style mới cho thanh tìm kiếm và dropdown */
+.search-filter {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--highlight-color);
+    border-radius: 25px;
+    padding: 10px 15px;
+    box-shadow: 3px 3px 6px var(--shadow-color), -3px -3px 6px var(--highlight-color);
+}
+
+.search-bar i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.category-dropdown {
+    position: relative;
+    background-color: var(--highlight-color);
+    border-radius: 25px;
+    box-shadow: 3px 3px 6px var(--shadow-color), -3px -3px 6px var(--highlight-color);
+}
+
+.category-dropdown select {
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 10px 40px 10px 15px;
+    font-size: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+    outline: none;
+}
+
+.category-dropdown i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    pointer-events: none;
+}
+
+/* Hiệu ứng hover cho dropdown và search bar */
+.search-bar:hover, .category-dropdown:hover {
+    box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--highlight-color);
+}
+
+.document {
+    background-color: var(--highlight-color);
+    border-radius: 15px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 5px 5px 10px var(--shadow-color), -5px -5px 10px var(--highlight-color);
+}

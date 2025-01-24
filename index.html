@@ -3,50 +3,21 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <!-- Meta Tags
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="Phuc Dinh, kbz, sauanla, Sâu ăn lá, Phucnd, kBz, seakbz" />
-    <meta name="description" content="With a passion for programming, my desire is to work as a .NET developer in a dynamic,
-    professional, open and focused human development environment" />
-    <meta name="author" content="Phuc nd" /> -->
 
     <!--Page Title-->
     <title>Tan Tai</title>
-
-    <!-- <meta proeperty="og:url" content="https://sauanla.com/" />
-    <meta property="og:site_name" content="Tôi là Đình Phúc" />
-
-    <meta property="og:image" content="img/seo-img.jpg" />
-    <meta property="og:image:secure_url" content="img/seo-img.jpg" />
-    <meta property="og:image:width" content="1248" />
-    <meta property="og:image:height" content="702" /> -->
     <!--Plugins Css-->
     <link rel="stylesheet" href="css/plugins.css" />
     <!--Main Styles Css-->
     <link rel="stylesheet" href="css/style-light.css" />
-
     <link rel="stylesheet" href="css/style-demo.css" />
-
-    <!--Main Lab Css-->
-    <link rel="stylesheet" href="Lab/Lab2.css" />
-    <link rel="stylesheet" href="Lab/Lab4.css" />
-    <link rel="stylesheet" href="Lab/Lab5.css" />
-
-
-
     <!--Color Css-->
     <link class="site-color" rel="stylesheet" href="css/blue-color.css" />
-
     <!--Modernizr Js-->
     <script src="js/modernizr.js"></script>
-
     <!--Favicons-->
     <link rel="shortcut icon" href="img/favicon-TaiPlatForm.jpg" type="image/x-icon" />
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140673178-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -57,6 +28,7 @@
 
         gtag('config', 'UA-140673178-2');
     </script>
+    
 </head>
 
 <body>
@@ -338,620 +310,38 @@
                             </ul>
                         </div>
                     </div>
-
+                    <style>
+                        iframe {
+                            width: 100%;
+                            height: 650px;
+                            border: 1px solid #ccc;
+                            /* Khung viền */
+                        }
+                    </style>
                     <!--Portfolio Items-->
                     <div class="row portfolio-items mb-50">
                         <!--Portfolio Item-->
                         <div class="item col-lg-12 col-sm-6 Lab1">
-                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-                                rel="stylesheet">
-
-                            <div class="container my-5">
-                                <h1 class="text-center mb-4">Course Management System</h1>
-
-                                <!-- Course List -->
-                                <div class="d-flex justify-content-between mb-3">
-                                    <h2>Course List</h2>
-                                    <button class="btn btn-primary" onclick="resetForm()">+ Add Course</button>
-                                </div>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Course Name</th>
-                                            <th>Instructor</th>
-                                            <th>Creation Date</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="courseTableBody">
-                                        <!-- Rows will be dynamically created using JavaScript -->
-                                    </tbody>
-                                </table>
-
-                                <!-- Add/Edit Course Form -->
-                                <div id="courseFormContainer" style="display:none;">
-                                    <h2 id="formTitle">Add Course</h2>
-                                    <form id="courseForm">
-                                        <input type="hidden" id="courseId" name="courseId">
-                                        <div class="mb-3">
-                                            <label for="courseName" class="form-label">Course Name<span
-                                                    class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="courseName" maxlength="255"
-                                                required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="courseDescription" class="form-label">Course Description</label>
-                                            <textarea class="form-control" id="courseDescription" rows="3"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="createdBy" class="form-label">Instructor</label>
-                                            <select class="form-select" id="createdBy" required>
-                                                <!-- Instructors will be dynamically loaded -->
-                                            </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-success">Save</button>
-                                        <button type="button" class="btn btn-secondary"
-                                            onclick="hideForm()">Cancel</button>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <script
-                                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-                            <script>
-                                let courses = [];
-                                let instructors = ['John Doe', 'Jane Smith', 'Alice Johnson'];
-                                let editingCourseId = null;
-
-                                document.addEventListener('DOMContentLoaded', () => {
-                                    const form = document.getElementById('courseForm');
-                                    const tableBody = document.getElementById('courseTableBody');
-                                    const createdBySelect = document.getElementById('createdBy');
-                                    const formContainer = document.getElementById('courseFormContainer');
-
-                                    // Load instructor list
-                                    instructors.forEach(name => {
-                                        const option = document.createElement('option');
-                                        option.value = name;
-                                        option.textContent = name;
-                                        createdBySelect.appendChild(option);
-                                    });
-
-                                    // Add or update course
-                                    form.addEventListener('submit', (e) => {
-                                        e.preventDefault();
-                                        const course = {
-                                            id: editingCourseId || Date.now(),
-                                            name: document.getElementById('courseName').value,
-                                            description: document.getElementById('courseDescription').value,
-                                            instructor: document.getElementById('createdBy').value,
-                                            createdAt: editingCourseId ? courses.find(c => c.id === editingCourseId).createdAt : new Date().toLocaleString(),
-                                        };
-
-                                        if (editingCourseId) {
-                                            courses = courses.map(c => (c.id === editingCourseId ? course : c));
-                                        } else {
-                                            courses.push(course);
-                                        }
-
-                                        resetForm();
-                                        renderCourses();
-                                        hideForm();
-                                    });
-
-                                    // Display course list
-                                    function renderCourses() {
-                                        tableBody.innerHTML = '';
-                                        courses.forEach((course, index) => {
-                                            const row = document.createElement('tr');
-                                            row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${course.name}</td>
-                    <td>${course.instructor}</td>
-                    <td>${course.createdAt}</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" onclick="editCourse(${course.id})">Edit</button>
-                        <button class="btn btn-danger btn-sm" onclick="deleteCourse(${course.id})">Delete</button>
-                    </td>
-                `;
-                                            tableBody.appendChild(row);
-                                        });
-                                    }
-
-                                    // Reset form
-                                    window.resetForm = function () {
-                                        editingCourseId = null;
-                                        form.reset();
-                                        formContainer.style.display = 'block';
-                                        document.getElementById('formTitle').textContent = 'Add Course';
-                                    };
-
-                                    // Hide form
-                                    window.hideForm = function () {
-                                        formContainer.style.display = 'none';
-                                    };
-
-                                    // Edit course
-                                    window.editCourse = function (id) {
-                                        const course = courses.find(c => c.id === id);
-                                        editingCourseId = id;
-                                        document.getElementById('courseName').value = course.name;
-                                        document.getElementById('courseDescription').value = course.description;
-                                        document.getElementById('createdBy').value = course.instructor;
-                                        formContainer.style.display = 'block';
-                                        document.getElementById('formTitle').textContent = 'Edit Course';
-                                    };
-
-                                    // Delete course
-                                    window.deleteCourse = function (id) {
-                                        if (confirm('Are you sure you want to delete this course?')) {
-                                            courses = courses.filter(c => c.id !== id);
-                                            renderCourses();
-                                        }
-                                    };
-
-                                    renderCourses();
-                                });
-                            </script>
-
-
+                            <iframe src="./Lab/lab1/index.html" title="Iframe Example"></iframe>
                         </div>
                         <!--Portfolio Item Lab2-->
                         <div class="item col-lg-12 col-sm-6 Lab2">
-
-                            <!-- nhập nội dung -->
-
+                            <iframe src="./Lab/lab2/index.html" title="Iframe Example"></iframe>
                         </div>
 
                         <!--Portfolio Item Lab3-->
                         <div class="item col-lg-12 col-sm-6 Lab3">
-
-                            <!-- nhập nội dung -->
-
+                            <iframe src="./Lab/lab3/index.html" title="Iframe Example"></iframe>
                         </div>
 
                         <!--Portfolio Item Lab4-->
                         <div class="item col-lg-12 col-sm-6 Lab4">
-
-                            <headerLab4 class="headerLab4">
-                                <div class="headerLab4-left">
-                                    <a href="#" class="back-button">
-                                        <i class="fas fa-arrow-left"></i>
-                                        Home
-                                    </a>
-                                    <div class="headerLab4-title">
-                                        MuleSoft 4.X Complete Guide For Beginners- Hands On Projects
-                                    </div>
-                                </div>
-                                <div class="headerLab4-actions">
-                                    <button class="headerLab4-button">
-                                        <i class="far fa-star"></i>
-                                        Leave a rating
-                                    </button>
-                                    <button class="headerLab4-button">
-                                        <i class="fas fa-chart-line"></i>
-                                        Your progress
-                                    </button>
-                                    <button class="headerLab4-button">
-                                        <i class="fas fa-share"></i>
-                                        Share
-                                    </button>
-                                    <button class="headerLab4-button">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </button>
-                                </div>
-                            </headerLab4>
-
-                            <div class="main-container">
-                                <div class="content-area">
-                                    <div class="video-container">
-                                        <iframe id="player"
-                                            src="https://www.youtube.com/embed/GOzKi6VEib4?enablejsapi=1"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen
-                                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0;">
-                                        </iframe>
-
-                                        <div class="video-overlay" id="videoOverlay">
-                                            <div class="play-button-container">
-                                                <i class="fas fa-play-circle play-button"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="tabs">
-                                        <a href="#" class="tab active">Overview</a>
-                                        <a href="#" class="tab">Q&A</a>
-                                        <a href="#" class="tab">Notes</a>
-                                        <a href="#" class="tab">Announcements</a>
-                                        <a href="#" class="tab">Reviews</a>
-                                        <a href="#" class="tab">Learning tools</a>
-                                    </div>
-
-                                    <div class="content">
-                                        <h1 class="course-title">
-                                            Upgraded with latest MuleSoft ESB versions, Anypoint Platform, DataWeave,
-                                            MUnit, DevOps, MCD Tests and Realtime Project
-                                        </h1>
-
-                                        <div class="stats-container">
-                                            <div class="stats">
-                                                <div class="stat">
-                                                    <div class="stat-main">
-                                                        <span>4.6</span>
-                                                        <span class="star">★</span>
-                                                    </div>
-                                                    <div class="stat-label">4,705 ratings</div>
-                                                </div>
-                                                <div class="stat">
-                                                    <div class="stat-main">26,379</div>
-                                                    <div class="stat-label">Students</div>
-                                                </div>
-                                                <div class="stat">
-                                                    <div class="stat-main">50.5 hours</div>
-                                                    <div class="stat-label">Total</div>
-                                                </div>
-                                            </div>
-
-                                            <div class="course-meta">
-                                                <div>Last updated November 2023</div>
-                                                <div>English, English [Auto], French [Auto], 5 more</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="learn-sectionLab4">
-                                            <h2>What you'll learn</h2>
-                                            <div class="row">
-                                                <div class="column">
-                                                    <ul class="learn-list">
-                                                        <li>You will become expert in Mule ESB, Anypoint platform
-                                                            operations, MUnit and DevOps with Mule.</li>
-                                                        <li>Step by step coding in detail explanation.</li>
-                                                        <li>You are a student/customer should be able to setup mulesoft
-                                                            by your own for your organization</li>
-                                                        <li>You should be able to develop, design, manage projects.</li>
-                                                        <li>Mule Level 1, Level 2 and Integration Associate
-                                                            certifications are guarantee.</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="column">
-                                                    <ul class="learn-list">
-                                                        <li>This course teaches you mule 4.x in depth including all the
-                                                            phases of SDLC.</li>
-                                                        <li>You will feel real time hands on experience after finishing
-                                                            this course.</li>
-                                                        <li>The course will keep on added with new topics from mulesoft.
-                                                        </li>
-                                                        <li>One course destination to learn all the actions of real time
-                                                            project.</li>
-                                                        <li>Mule real time project of this course helps to you to deal
-                                                            with all real time project activities.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="sidebar">
-                                    <div class="course-content">
-                                        <div class="content-headerLab4">
-                                            Course content
-                                            <span class="close-button">×</span>
-                                        </div>
-
-                                        <div class="lesson">
-                                            <div class="lesson-checkbox"></div>
-                                            <i class="fas fa-play-circle lesson-icon"></i>
-                                            <div class="lesson-content">
-                                                <div class="lesson-title">2. Integration introduction</div>
-                                                <div class="lesson-duration">8min</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="lesson">
-                                            <div class="lesson-checkbox"></div>
-                                            <i class="fas fa-play-circle lesson-icon"></i>
-                                            <div class="lesson-content">
-                                                <div class="lesson-title">3. Mule API development life cycle and
-                                                    components</div>
-                                                <div class="lesson-duration">4min</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="lesson">
-                                            <div class="lesson-checkbox"></div>
-                                            <i class="far fa-file-alt lesson-icon"></i>
-                                            <div class="lesson-content">
-                                                <div class="lesson-title">4. Course resources & documents</div>
-                                                <div class="lesson-duration">1min</div>
-                                            </div>
-                                            <button class="resources-button">
-                                                Resources
-                                                <i class="fas fa-chevron-down"></i>
-                                            </button>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 2: Mule 4 installation set-up
-                                            </div>
-                                            <div class="sectionLab4-info">0/2 | 21min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 3: Mule basics - develop first
-                                                mule app, run, debug, export & import mule app</div>
-                                            <div class="sectionLab4-info">0/7 | 42min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 4: Mule basics - Mule events and
-                                                mule message structure</div>
-                                            <div class="sectionLab4-info">0/12 | 1hr 17min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 5: Mule basics - Basic
-                                                transformations</div>
-                                            <div class="sectionLab4-info">0/5 | 1hr 2min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 7: DataWeave language - basics
-                                            </div>
-                                            <div class="sectionLab4-info">0/10 | 1hr 11min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 8: Mule database module - first
-                                                system api uhub (database) sapi...</div>
-                                            <div class="sectionLab4-info">0/9 | 1hr 15min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 9: Mule validation module and
-                                                flow types</div>
-                                            <div class="sectionLab4-info">0/7 | 57min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 10: Mule error handling</div>
-                                            <div class="sectionLab4-info">0/11 | 2hr 22min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 11: Anypoint platform
-                                                introduction & access management</div>
-                                            <div class="sectionLab4-info">0/3 | 19min</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 12: Anypoint Platform - Design
-                                                Center - Design API's Using RAML</div>
-                                            <div class="sectionLab4-info">0/6 | 1hr</div>
-                                        </div>
-
-                                        <div class="sectionLab4-headerLab4">
-                                            <div class="sectionLab4-title">sectionLab4 13: Anypoint Platform - Design
-                                                Center - Design Fragments Based API's Using...</div>
-                                            <div class="sectionLab4-info">0/9 | 57min</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                            <iframe src="./Lab/lab4/index.html" title="Iframe Example"></iframe>
                         </div>
+
                         <!--Portfolio Item Lab5-->
                         <div class="item col-lg-12 col-sm-6 Lab5">
-
-                            <div class="headerLab5">
-                                <h1 class="title">My learning</h1>
-                                <div class="watched-time">
-                                    <b>87hr 36min</b>watched
-                                    <span class="info-icon">i</span>
-                                    <a href="#" class="view-activity"><b>View all activity</b></a>
-                                </div>
-                                <div class="menu">
-                                    <div class="menu-item" data-section="all-courses">All courses</div>
-                                    <div class="menu-item" data-section="learning-paths">Learning paths</div>
-                                    <div class="menu-item" data-section="certifications">Certifications</div>
-                                    <div class="menu-item" data-section="archived">Archived</div>
-                                    <div class="menu-item" data-section="learning-tools">Learning tools</div>
-                                </div>
-                            </div>
-                            <!-- certifications -->
-                            <div id="certifications-content" class="content-section">
-                                <div class="section">
-                                    <div class="section-header">
-                                        <h2 class="section-title">My badges</h2>
-                                    </div>
-                                    <div class="badge-count">
-                                        <div class="badge-info">
-                                            <span>You have earned and uploaded <b>0 badges</b></span>
-                                            <span class="info-icon">i</span>
-                                        </div>
-                                        <button class="import-button">Import new badge</button>
-                                    </div>
-                                    <p class="description">
-                                        Currently, there are no badges uploaded to your profile. Begin your journey
-                                        towards your certification goals or
-                                        <a href="#" class="link">upload your third-party</a> badges to your profile and
-                                        impress your manager and peers with your accomplishments.
-                                        Start preparing for your next certificate today!
-                                    </p>
-                                </div>
-
-                                <div class="section">
-                                    <div class="section-header">
-                                        <h2 class="section-title">Certification preparation</h2>
-                                    </div>
-                                    <div class="badge-count">
-                                        <div class="badge-info">
-                                            <span>You are preparing for <b>4 certifications</b></span>
-                                            <span class="info-icon">i</span>
-                                        </div>
-                                        <a href="#" class="explore-button">Explore certification preparation</a>
-                                    </div>
-
-                                    <div class="certification-grid">
-                                        <div class="certification-item">
-                                            <img src="img/Oracle Certified Associate, Java SE 8 Programmer.png"
-                                                alt="Oracle" class="certification-image">
-                                            <div class="certification-details">
-                                                <div class="certification-title">Oracle Certified Associate, Java SE 8
-                                                    Programmer</div>
-                                                <div class="certification-provider">Oracle</div>
-                                            </div>
-                                            <div class="certification-options">
-                                                <span class="options-icon">⋮</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="certification-item">
-                                            <img src="img/ISTQB® Certified Tester Foundation Level (CTFL).png"
-                                                alt="ISTQB" class="certification-image">
-                                            <div class="certification-details">
-                                                <div class="certification-title">ISTQB® Certified Tester Foundation
-                                                    Level (CTFL)</div>
-                                                <div class="certification-provider">Brightest</div>
-                                            </div>
-                                            <div class="certification-options">
-                                                <span class="options-icon">⋮</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- archived -->
-                            <div id="archived-content" class="content-section">
-                                <div
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; padding: 20px;">
-                                    <div class="course-card">
-                                        <div class="course-image">
-                                            <div class="menu-dots"></div>
-                                            <img src="img/csr.png" alt="CSR Training">
-                                        </div>
-                                        <div class="course-details">
-                                            <div class="course-title">FPT_Corporate Social Responsibility Training 2024
-                                            </div>
-                                            <div class="course-author">FSOFT Content Development</div>
-                                            <div class="progress-bar">
-                                                <div class="progress"></div>
-                                            </div>
-                                            <div class="completion">
-                                                <span>100% complete</span>
-                                                <span class="rating">★★★☆☆</span>
-                                            </div>
-                                            <div style="text-align: right; color: #666; font-size: 0.9em;">Your rating
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <div class="course-image">
-                                            <div class="menu-dots"></div>
-                                            <img src="img/AMF.jpg" alt="Agile Training">
-                                        </div>
-                                        <div class="course-details">
-                                            <div class="course-title">Agile Methodology Fundamentals</div>
-                                            <div class="course-author">FSOFT Content Development</div>
-                                            <div class="progress-bar">
-                                                <div class="progress" style="width: 85%"></div>
-                                            </div>
-                                            <div class="completion">
-                                                <span>85% complete</span>
-                                                <span class="rating">★★★★☆</span>
-                                            </div>
-                                            <div style="text-align: right; color: #666; font-size: 0.9em;">Your rating
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="course-card">
-                                        <div class="course-image">
-                                            <div class="menu-dots"></div>
-                                            <img src="img/cam.jpg" alt="Security Training">
-                                        </div>
-                                        <div class="course-details">
-                                            <div class="course-title">Cybersecurity Awareness Month 2024 Kick-off</div>
-                                            <div class="course-author">FSOFT Content Development</div>
-                                            <div class="progress-bar">
-                                                <div class="progress" style="width: 75%"></div>
-                                            </div>
-                                            <div class="completion">
-                                                <span>75% complete</span>
-                                                <span class="rating">★★★★☆</span>
-                                            </div>
-                                            <div style="text-align: right; color: #666; font-size: 0.9em;">Your rating
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- learning-tools -->
-                            <div id="learning-tools-content" class="content-section">
-                                <div style="padding: 20px;">
-                                    <h1 style="font-size: 32px; margin-bottom: 16px;">Learning tools</h1>
-                                    <p style="font-size: 16px; color: #333; margin-bottom: 30px;">
-                                        Explore a diverse range of courses and take advantage of these versatile tools
-                                        to
-                                        gain knowledge, skills, and confidence at your own pace.
-                                    </p>
-
-                                    <div
-                                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                                        <!-- Learning Reminders Card -->
-                                        <div
-                                            style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; background: white;">
-                                            <div style="display: flex; gap: 16px; align-items: flex-start;">
-                                                <div style="font-size: 32px;">⏰</div>
-                                                <div>
-                                                    <h3 style="margin: 0; font-size: 20px; margin-bottom: 8px;">Learning
-                                                        reminders</h3>
-                                                    <p style="color: #666; margin: 0 0 16px 0; font-size: 14px;">
-                                                        Set time aside to learn and get reminders using your scheduler.
-                                                    </p>
-                                                    <p style="margin: 0; color: #333;">You currently have no ongoing
-                                                        reminders.</p>
-                                                    <a href="#"
-                                                        style="color: #9146ff; text-decoration: none; display: inline-block; margin-top: 16px;"><u>See
-                                                            more</u></a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Reflections Card -->
-                                        <div
-                                            style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 24px; background: white;">
-                                            <div style="display: flex; gap: 16px; align-items: flex-start;">
-                                                <div style="font-size: 32px;">✍</div>
-                                                <div>
-                                                    <div
-                                                        style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                                                        <h3 style="margin: 0; font-size: 20px;">Reflections</h3>
-                                                        <span
-                                                            style="background: #f0f0f0; padding: 2px 8px; border-radius: 4px; font-size: 12px;">Beta</span>
-                                                    </div>
-                                                    <p style="color: #666; margin: 0 0 16px 0; font-size: 14px;">
-                                                        Take time to reflect to strengthen your learning.
-                                                    </p>
-                                                    <p style="margin: 0; color: #333;">
-                                                        You have currently no recorded reflections on your learning
-                                                        journey.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
+                            <iframe src="./Lab/lab5/index.html" title="Iframe Example"></iframe>
                         </div>
 
                         <!--Portfolio Item Lab6-->
@@ -960,7 +350,7 @@
                                 #content {
                                     border: 1px solid #ccc;
                                     margin-top: 20px;
-                                    height: 700px;
+                                    height: 500px;
                                     width: 100%;
                                 }
 
@@ -1002,8 +392,6 @@
                                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
                                     /* Giảm đổ bóng */
                                 }
-
-                                /* Nút màu đỏ (ví dụ thêm) */
                                 .custom-button.red {
                                     background-color: #00A3E1;
                                 }
@@ -1011,13 +399,19 @@
                                 .custom-button.red:hover {
                                     background-color: #077ead;
                                 }
+                                
                             </style>
                             <h1>Repositories</h1>
-                            <button class="custom-button red" onclick="loadIframe('req5+6.html')">Req5+6</button>
-                            <button class="custom-button red" onclick="loadIframe('req7.html')">Req7</button>
-                            <button class="custom-button red" onclick="loadIframe('req8.html')">Req8</button>
+                            <button class="custom-button red" onclick="loadIframe('./lab/lab6/req5+6.html')">Req5+6</button>
+                            <button class="custom-button red" onclick="loadIframe('./lab/lab6/req7.html')">Req7</button>
+                            <button class="custom-button red" onclick="loadIframe('./lab/lab6/req8.html')">Req8</button>
 
-                            <iframe id="content" src="" frameborder="1"></iframe>
+                            <iframe 
+    id="content" 
+    style="height: 660px;" 
+    src="./lab/lab6/req5+6.html" 
+    frameborder="1">
+</iframe>
                         </div>
                         <script>
                             function loadContent(file) {
@@ -1167,11 +561,6 @@
     <script src="js/main.js"></script>
     <script src="js/backstretch.js"></script>
     <script src="js/main-demo.js"></script>
-
-    <script src="Lab/Lab2.js"></script>
-    <script src="Lab/Lab4.js"></script>
-
-    <script src="Lab/Lab5.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chia sẻ Tài liệu Sinh viên</title>
+    <link rel="stylesheet" href="../../lab/lab3/lab3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape" style="top: 20%; left: 10%; width: 50px; height: 50px; background-color: var(--primary-color); border-radius: 50%;"></div>
+        <div class="shape" style="top: 70%; left: 80%; width: 70px; height: 70px; background-color: var(--primary-color); transform: rotate(45deg);"></div>
+        <div class="shape" style="top: 40%; left: 60%; width: 60px; height: 60px; background-color: var(--primary-color); border-radius: 50% 0 50% 50%;"></div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Chia sẻ Tài liệu Sinh viên</h1>
+            <button class="toggle-btn" id="darkModeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </header>
+        <div class="search-filter">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Tìm kiếm tài liệu...">
+            </div>
+            <div class="category-dropdown">
+                <select id="categorySelect">
+                    <option value="all">Tất cả ngành</option>
+                    <option value="IT">Công nghệ thông tin</option>
+                    <option value="Economics">Kinh tế</option>
+                    <option value="Medicine">Y học</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="upload-section neumorphic">
+            <h2>Tải lên tài liệu mới</h2>
+            <p>Chia sẻ kiến thức của bạn với cộng đồng sinh viên</p>
+            <button class="upload-btn"><i class="fas fa-upload"></i> Tải lên tài liệu</button>
+        </div>
+        <div class="documents" id="documentsContainer">
+            <!-- Tài liệu sẽ được thêm động ở đây -->
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Chia sẻ Tài liệu Sinh viên. Tất cả quyền được bảo lưu.</p>
+    </footer>
+    <script src="../../lab/lab3/lab3.js"></script>
+</body>
+</html>

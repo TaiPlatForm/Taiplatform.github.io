@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udemy Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .categories {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            overflow-x: hidden;  /* Đảm bảo không có thanh cuộn ngang */
+            background-color: #fff;
+        }
+
+        .category-pill {
+            padding: 8px 16px;
+            background-color: #E4E8EB;
+            border-radius: 25px;
+            white-space: nowrap;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-pill:hover {
+            background-color: #e6e6e6;
+        }
+
+        .category-pill.active {
+            background-color: #1c1d1f;
+            color: white;
+        }
+
+        .learners {
+            font-size: 12px;
+            color: #6a6f73;
+        }
+
+        .courses-container {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;  /* Cho phép cuộn ngang */
+}
+
+.course-card {
+    flex: 0 0 auto;  /* Đảm bảo mỗi course-card có kích thước cố định và không bị co giãn */
+    width: 300px;  /* Đặt chiều rộng cố định cho mỗi card */
+    border: 1px solid #d1d7dc;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+
+        .course-card:hover {
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1001;
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 15px;
+        }
+
+        .course-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .instructor {
+            font-size: 13px;
+            color: #6a6f73;
+            margin-bottom: 5px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        
+
+        .price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .bestseller {
+            display: inline-block;
+            background-color: #eceb98;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .course-popup {
+            position: absolute;
+            top: 0;
+            left: calc(100% + 10px);
+            width: 300px;
+            background: white;
+            border: 1px solid #d1d7dc;
+            border-radius: 4px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .course-popup.show-left {
+        left: auto;
+        right: calc(100% + 10px);
+        }
+        .course-card:hover .course-popup {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .popup-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .popup-updated {
+            color: #1e6055;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .popup-details {
+            color: #6a6f73;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .popup-description {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .popup-features {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .popup-features li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .popup-features li::before {
+            content: "✓";
+            color: #1e6055;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background: #a435f0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: #8710d8;
+        }
+
+        .show-all-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 12px 24px;
+            border: 1px solid #1c1d1f;
+            color: #1c1d1f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 768px) {
+            .course-popup {
+                left: 0;
+                top: 100%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="categories">
+        <div class="category-pill active"><b>Web Development</b></b><br><span class="learners">13.3M+ learners</span></div>
+        <div class="category-pill"><b>JavaScript</b><br><span class="learners">17.7M+ learners</span></div>
+        <div class="category-pill"><b>React JS</b><br><span class="learners">7M+ learners</span></div>
+        <div class="category-pill"><b>Angular</b><br><span class="learners">4M+ learners</span></div>
+        <div class="category-pill"><b>Java</b><br><span class="learners">15.5M+ learners</span></div>
+        <div class="category-pill"><b>Android Development</b><br><span class="learners">8M+ learners</span></div>
+        <div class="category-pill"><b>iOS Development</b><br><span class="learners">4M+ learners</span></div>
+        <div class="category-pill"><b>CSS</b><br><span class="learners">9M+ learners</span></div>
+    </div>
+
+    <div class="courses-container">
+        
+        <div class="course-card">
+            <img src="../../lab/lab6/asset/h1.jpg" alt="Course" class="course-image">
+            <div class="course-info">
+                <h3 class="course-title">The Complete 2024 Web Development Bootcamp</h3>
+                <p class="instructor">Dr. Angela Yu, Developer and Lead Instructor</p>
+                <div class="rating">
+                    <span class="rating-score" style="color: #e40909; font-weight: bold;">4.7</span>
+                    <span class="rating-stars" style="color: #f76623"> ★★★★★</span>
+                    <span class="rating-count">(409,451)</span>
+                </div>
+                <p class="price">₫1,699,000</p>
+                <span class="bestseller">Bestseller</span>
+            </div>
+            <div class="course-popup">
+                <h3 class="popup-title">The Complete 2024 Web Development Bootcamp</h3>
+                <p class="popup-updated">Updated <b>October 2024</b></p>
+                <p class="popup-details">74 total hours · All Levels · Subtitles</p>
+                <p class="popup-description">Become a Full-Stack Web Developer with just ONE course. HTML, CSS, Javascript, Node, React, PostgreSQL, Web3 and DApps</p>
+                <ul class="popup-features">
+                    <li>Build 16 web development projects for your portfolio, ready to apply for junior developer jobs.</li>
+                    <li>Learn the latest technologies, including Javascript, React, Node and even Web3 development.</li>
+                    <li>After the course you will be able to build ANY website you want.</li>
+                </ul>
+                <button class="add-to-cart">Add to cart</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="../../lab/lab6/asset/h2.jpg" alt="Course" class="course-image">
+
+            <div class="course-info">
+                <h3 class="course-title">The Web Developer Bootcamp 2024</h3>
+                <p class="instructor">Colt Steele</p>
+                <div class="rating">
+                    <span class="rating-score" style="color: #e40909; font-weight: bold;">4.7</span>
+                    <span class="rating-stars" style="color: #f76623"> ★★★★★</span>
+                    <span class="rating-count">(276,674)</span>
+                </div>
+                <p class="price">₫2,399,000</p>
+                <span style="display: inline-block; height: 20px;"></span> <!-- Phần tử giữ không gian -->
+            </div>
+
+            <div class="course-popup">
+                <h3 class="popup-title">The Web Developer Bootcamp 2024</h3>
+                <p class="popup-updated">Updated <b>October 2024</b></p>
+                <p class="popup-details">74 total hours · All Levels · Subtitles</p>
+                <p class="popup-description">10 Hours of React just added. Become a Developer With ONE course - HTML, CSS, JavaScript, React, Node, MongoDB and More!</p>
+                <ul class="popup-features">
+                    <li>The ins and outs of HTML5, CSS3, and Modern JavaScript for 2021</li>
+                    <li>Make REAL web applications using cutting-edge technologies</li>
+                    <li>Create responsive, accessible, and beautiful layouts</li>
+                </ul>
+                <button class="add-to-cart">Add to cart</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="../../lab/lab6/asset/h3.jpg" alt="Course" class="course-image">
+
+            <div class="course-info">
+                <h3 class="course-title">Web Development Masterclass - Online Certification Course</h3>
+                <p class="instructor">YouAccel Training</p>
+                <div class="rating">
+                    <span class="rating-score" style="color: #e40909; font-weight: bold;">4.5</span>
+                    <span class="rating-stars" style="color: #f76623"> ★★★★★</span>
+                    <span class="rating-count">(10,000)</span>
+                </div>
+                <p class="price">₫1,499,000</p>
+                <span style="display: inline-block; height: 20px;"></span> <!-- Phần tử giữ không gian -->
+            </div>
+
+            <div class="course-popup">
+                <h3 class="popup-title">Web Development Masterclass - Online Certification Course</h3>
+                <p class="popup-updated">Updated <b>October 2022</b></p>
+                <p class="popup-details">74 total hours · All Levels · Subtitles</p>
+                <p class="popup-description">Cloud Computing | Web Apps | Linux | Web Servers | DBMS | LAMP Stack | HTML | CSS | JavaScript | PHP | + More</p>
+                <ul class="popup-features">
+                    <li>Understand the essentials of Local and Wide Area Networks</li>
+                    <li>Setup a basic network.</li>
+                    <li>Register a domain name with Domain Privacy</li>
+                </ul>
+                <button class="add-to-cart">Add to cart</button>
+            </div>
+        </div>
+
+        <div class="course-card">
+            <img src="../../lab/lab6/asset/h4.jpg" alt="Course" class="course-image">
+
+            <div class="course-info">
+                <h3 class="course-title">Practical Web Development: 22 Courses in 1/h3>
+                <p class="instructor">Creative Online School</p>
+                <div class="rating">
+                    <span class="rating-score" style="color: #e40909; font-weight: bold;">4.7</span>
+                    <span class="rating-stars" style="color: #f76623"> ★★★★★</span>
+                    <span class="rating-count">(312,580)</span>
+                </div>
+                <p class="price">₫499,000</p>
+                <span style="display: inline-block; height: 20px;"></span> <!-- Phần tử giữ không gian -->
+            </div>
+
+            <div class="course-popup">
+                <h3 class="popup-title">Practical Web Development: 22 Courses in 1</h3>
+                <p class="popup-updated">Updated <b>October 2023</b></p>
+                <p class="popup-details">74 total hours · All Levels · Subtitles</p>
+                <p class="popup-description">Learn PHP, Apache, MySQL, MongoDB, Python, JavaScript, XML, JSON, HTML, CSS, WordPress and more. With practical examples</p>
+                <ul class="popup-features">
+                    <li>In depth working knowledge in HTML, CSS, Javascript, XML, JSON, Git and more.</li>
+                    <li>Basic & Advanced Operations using PHP, practical projects with PHP</li>
+                    <li>In depth working experience on Basic & Advanced MySQL</li>
+                </ul>
+                <button class="add-to-cart">Add to cart</button>
+            </div>
+        </div>
+        <!-- Thêm các course-card khác tương tự -->
+    </div>
+
+    <a href="#" class="show-all-button">Show all Web Development courses</a>
+
+    <script>
+        // Xử lý click cho các category pills
+        const categoryPills = document.querySelectorAll('.category-pill');
+        
+        categoryPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Xóa active class từ tất cả pills
+                categoryPills.forEach(p => p.classList.remove('active'));
+                // Thêm active class cho pill được click
+                pill.classList.add('active');
+            });
+        });
+
+        const courseCards = document.querySelectorAll('.course-card');
+
+        courseCards.forEach((card, index) => {
+            const popup = card.querySelector('.course-popup');
+            if (index >= 2) { // Khoá học thứ 3 và 4 (index 2, 3)
+                popup.classList.add('show-left');
+            } else {
+                popup.classList.remove('show-left'); // Khoá học thứ 1 và 2 (index 0, 1)
+            }
+        });
+    </script>
+</body>
+</html>

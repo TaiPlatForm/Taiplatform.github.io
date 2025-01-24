@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Exercise Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Thêm các link CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/clike/clike.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f1f5f9;
+            --success: #22c55e; 
+            --warning: #eab308;
+            --danger: #ef4444;
+        }
+
+        body {
+            background: var(--light);
+            min-height: 100vh;
+            padding: 2rem;
+            transition: background 0.3s ease;
+        }
+
+        body.dark {
+            background: var(--dark);
+            color: var(--light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .dark .header {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .search-filter {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1),
+                       inset -2px -2px 5px rgba(255,255,255,0.5);
+            width: 300px;
+            font-size: 0.9rem;
+        }
+
+        .dark .search-box input {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--light);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+
+        .filter-dropdown {
+            position: relative;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .filter-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 0.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 10;
+        }
+
+        .dark .filter-content {
+            background: var(--dark);
+        }
+
+        .filter-content.active {
+            display: block;
+        }
+
+        .filter-content button {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            color: var(--dark);
+            transition: background 0.3s ease;
+        }
+
+        .dark .filter-content button {
+            color: var(--light);
+        }
+
+        .filter-content button:hover {
+            background: #e2e8f0;
+        }
+
+        .dark .filter-content button:hover {
+            background: #334155;
+        }
+
+        /* Exercise Grid */
+        .language-section {
+            margin-bottom: 2rem;
+        }
+
+        .language-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            padding-left: 0.5rem;
+        }
+
+        .dark .language-title {
+            color: var(--light);
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0.5rem;
+        }
+
+        .exercise-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+                       -8px -8px 16px rgba(255,255,255,0.8);
+        }
+
+        .dark .exercise-card {
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 8px 8px 16px rgba(0,0,0,0.2),
+                       -8px -8px 16px rgba(255,255,255,0.05);
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .status-icon {
+            font-size: 1.2rem;
+        }
+
+        .status-completed { color: var(--success); }
+        .status-progress { color: var(--warning); }
+        .status-not-started { color: #94a3b8; }
+
+        .exercise-desc {
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .dark .exercise-desc {
+            color: #94a3b8;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .difficulty {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .difficulty.easy { background: #dcfce7; color: var(--success); }
+        .difficulty.medium { background: #fef9c3; color: var(--warning); }
+        .difficulty.hard { background: #fee2e2; color: var(--danger); }
+
+        .meta-info {
+            display: flex;
+            gap: 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .dark .meta-info {
+            color: #94a3b8;
+        }
+
+        .meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .start-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .start-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 0.8rem;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-filter {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .exercise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Coding Exercise Platform</h1>
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search exercises...">
+                </div>
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        <i class="fas fa-filter"></i>
+                        <span>Filter by Language</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="filter-content">
+                        <button data-language="all">All Languages</button>
+                        <button data-language="python">Python</button>
+                        <button data-language="java">Java</button>
+                        <button data-language="c">C</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="exercise-container">
+            <!-- Exercise sections will be dynamically inserted here -->
+        </main>
+    </div>
+
+    <button class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Exercise Data
+        const exercisesData = {
+            Python: [
+                {
+                    id: 1,
+                    title: "Array Sum",
+                    description: "Calculate the sum of array elements using Python list comprehension",
+                    difficulty: "easy",
+                    timeLimit: "2 min",
+                    points: 100,
+                    status: "completed"
+                },
+                {
+                    id: 2,
+                    title: "Binary Search",
+                    description: "Implement an efficient binary search algorithm",
+                    difficulty: "medium",
+                    timeLimit: "5 min",
+                    points: 200,
+                    status: "in_progress"
+                },
+                {
+                    id: 3,
+                    title: "Tree Traversal",
+                    description: "Implement different tree traversal methods",
+                    difficulty: "hard",
+                    timeLimit: "10 min",
+                    points: 300,
+                    status: "not_started"
+                }
+            ],
+            Java: [
+                {
+                    id: 4,
+                    title: "Linked List",
+                    description: "Implement a doubly linked list with all operations",
+                    difficulty: "medium",
+                    timeLimit: "8 min",
+                    points: 150,
+                    status: "not_started"
+                },
+                {
+                    id: 5,
+                    title: "Stack Implementation",
+                    description: "Create a stack using arrays with push/pop operations",
+                    difficulty: "easy",
+                    timeLimit: "5 min",
+                    points: 100,
+                    status: "completed"
+                }
+            ],
+            C: [
+                {
+                    id: 6,
+                    title: "Pointer Basics",
+                    description: "Practice basic pointer operations and memory management",
+                    difficulty: "hard",
+                    timeLimit: "15 min",
+                    points: 250,
+                    status: "not_started"
+                },
+                {
+                    id: 7,
+                    title: "Structure Arrays",
+                    description: "Work with arrays of structures and pointers",
+                    difficulty: "medium",
+                    timeLimit: "10 min",
+                    points: 200,
+                    status: "in_progress"
+                }
+            ]
+        };
+
+        // Helper Functions
+        function getStatusIcon(status) {
+            switch(status) {
+                case 'completed':
+                    return '<i class="fas fa-check-circle status-completed"></i>';
+                case 'in_progress':
+                    return '<i class="fas fa-clock status-progress"></i>';
+                default:
+                    return '<i class="far fa-circle status-not-started"></i>';
+            }
+        }
+
+        // Render Functions
+        function renderExerciseCard(exercise) {
+            return `
+                <div class="exercise-card">
+                    <div class="card-header">
+                        <h3 class="exercise-title">${exercise.title}</h3>
+                        ${getStatusIcon(exercise.status)}
+                    </div>
+                    <p class="exercise-desc">${exercise.description}</p>
+                    <div class="card-footer">
+                        <span class="difficulty ${exercise.difficulty}">${exercise.difficulty.charAt(0).toUpperCase() + exercise.difficulty.slice(1)}</span>
+                        <div class="meta-info">
+                            <span><i class="far fa-clock"></i>${exercise.timeLimit}</span>
+                            <span><i class="fas fa-star"></i>${exercise.points} pts</span>
+                        </div>
+                    </div>
+                    <button class="start-btn">Start Exercise</button>
+                </div>
+            `;
+        }
+
+        function renderExercises(exercises = exercisesData) {
+            const container = document.getElementById('exercise-container');
+            container.innerHTML = '';
+
+            Object.entries(exercises).forEach(([language, languageExercises]) => {
+                if (languageExercises.length === 0) return;
+
+                const section = document.createElement('section');
+                section.className = 'language-section';
+                section.innerHTML = `
+                    <h2 class="language-title">${language}</h2>
+                    <div class="exercise-grid">
+                        ${languageExercises.map(exercise => renderExerciseCard(exercise)).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        // Filter and Search
+        const searchInput = document.querySelector('.search-box input');
+        const filterDropdown = document.querySelector('.filter-dropdown');
+        const filterBtn = document.querySelector('.filter-btn');
+        const filterContent = document.querySelector('.filter-content');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredExercises = {};
+
+            Object.entries(exercisesData).forEach(([language, exercises]) => {
+                filteredExercises[language] = exercises.filter(exercise => 
+                    exercise.title.toLowerCase().includes(searchTerm) ||
+                    exercise.description.toLowerCase().includes(searchTerm)
+                );
+            });
+
+            renderExercises(filteredExercises);
+        });
+
+        filterBtn.addEventListener('click', () => {
+            filterContent.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!filterDropdown.contains(e.target)) {
+                filterContent.classList.remove('active');
+            }
+        });
+
+        filterContent.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                const language = button.dataset.language;
+                const filteredExercises = {};
+
+                if (language === 'all') {
+                    renderExercises();
+                } else {
+                    filteredExercises[language] = exercisesData[language];
+                    renderExercises(filteredExercises);
+                }
+
+                filterContent.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            themeIcon.classList.toggle('fa-moon');
+            themeIcon.classList.toggle('fa-sun');
+        });
+
+        // Initial Render
+        renderExercises();
+
+        // Start Exercise Button Click Handler
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('start-btn')) {
+                const card = e.target.closest('.exercise-card');
+                const title = card.querySelector('.exercise-title').textContent;
+                alert(`Starting exercise: ${title}`);
+                // Here you would typically navigate to the coding environment
+            }
+        });
+    </script>
+
+    <!-- Coding Environment (Initially hidden) -->
+<div id="coding-environment" class="coding-env" style="display: none;">
+    <div class="coding-header">
+        <div class="exercise-info">
+            <h2 id="exercise-title"></h2>
+            <p id="exercise-description"></p>
+        </div>
+        <div class="action-buttons">
+            <button class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
+            <button class="hint-btn" data-hints="3"><i class="fas fa-lightbulb"></i> Hint (3)</button>
+            <button class="save-btn"><i class="fas fa-save"></i> Save Progress</button>
+        </div>
+    </div>
+
+    <div class="coding-main">
+        <div class="code-section">
+            <div class="code-header">
+                <div class="language-select">
+                    <select id="language-switcher">
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="c">C</option>
+                    </select>
+                </div>
+                <div class="code-actions">
+                    <button class="run-btn"><i class="fas fa-play"></i> Run Code</button>
+                    <button class="clear-btn"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="submit-btn"><i class="fas fa-paper-plane"></i> Submit</button>
+                </div>
+            </div>
+            <div class="editor-container">
+                <textarea id="code-editor" class="code-editor"></textarea>
+            </div>
+        </div>
+
+        <div class="test-cases-section">
+            <div class="test-cases-header">
+                <h3>Test Cases</h3>
+                <button class="add-test-case-btn"><i class="fas fa-plus"></i> Add Test Case</button>
+            </div>
+            <div class="test-cases-list">
+                <!-- Test cases will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="results-section" style="display: none;">
+        <div class="results-header">
+            <h3>Submission Results</h3>
+            <div class="overall-status">
+                <span class="status-badge"></span>
+                <span class="score"></span>
+            </div>
+        </div>
+        <div class="test-results">
+            <!-- Test results will be dynamically added here -->
+        </div>
+        <div class="performance-metrics">
+            <div class="metric">
+                <i class="fas fa-clock"></i>
+                <span>Execution Time: <span class="execution-time">0 ms</span></span>
+            </div>
+            <div class="metric">
+                <i class="fas fa-memory"></i>
+                <span>Memory Used: <span class="memory-used">0 MB</span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add this CSS to your existing styles -->
+<style>
+.coding-env {
+    background: var(--light);
+    min-height: 100vh;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.dark .coding-env {
+    background: var(--dark);
+}
+
+.coding-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.dark .coding-header {
+    background: rgba(30, 41, 59, 0.8);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-buttons button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn {
+    background: #64748b;
+    color: white;
+}
+
+.hint-btn {
+    background: #eab308;
+    color: white;
+}
+
+.save-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.coding-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.code-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+               -8px -8px 16px rgba(255,255,255,0.8);
+}
+
+.dark .code-section {
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.2),
+               -8px -8px 16px rgba(255,255,255,0.05);
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.language-select select {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    background: var(--light);
+    color: var(--dark);
+}
+
+.dark .language-select select {
+    background: var(--dark);
+    color: var(--light);
+}
+
+.code-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.code-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.run-btn {
+    background: var(--success);
+    color: white;
+}
+
+.clear-btn {
+    background: var(--warning);
+    color: white;
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.code-editor {
+    width: 100%;
+    height: 500px;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--light);
+    color: var(--dark);
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+    resize: none;
+}
+
+.dark .code-editor {
+    background: var(--dark);
+    color: var(--light);
+}
+
+.test-cases-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+               -8px -8px 16px rgba(255,255,255,0.8);
+}
+
+.dark .test-cases-section {
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.2),
+               -8px -8px 16px rgba(255,255,255,0.05);
+}
+
+.test-cases-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.add-test-case-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.test-case {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.dark .test-case {
+    background: var(--dark);
+}
+
+.results-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-top: 2rem;
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.1),
+               -8px -8px 16px rgba(255,255,255,0.8);
+}
+
+.dark .results-section {
+    background: rgba(30, 41, 59, 0.9);
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.2),
+               -8px -8px 16px rgba(255,255,255,0.05);
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 500;
+}
+
+.status-success { background: #dcfce7; color: var(--success); }
+.status-failed { background: #fee2e2; color: var(--danger); }
+
+.performance-metrics {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.metric {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #64748b;
+}
+
+@media (max-width: 768px) {
+    .coding-main {
+        grid-template-columns: 1fr;
+    }
+
+    .coding-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .action-buttons {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+</style>
+
+<!-- Add this JavaScript to your existing script -->
+<script>
+// Template code for different languages
+const codeTemplates = {
+    python: `def solution():
+    # Write your code here
+    pass
+
+# Test your code here
+if __name__ == "__main__":
+    result = solution()
+    print(result)`,
+    
+    java: `public class Solution {
+    public static void main(String[] args) {
+        // Write your code here
+    }
+}`,
+    
+    c: `#include <stdio.h>
+
+int main() {
+    // Write your code here
+    return 0;
+}`
+};
+
+// Test cases data
+const testCases = [
+    {
+        input: "Example input 1",
+        expectedOutput: "Expected output 1"
+    },
+    {
+        input: "Example input 2",
+        expectedOutput: "Expected output 2"
+    }
+];
+
+// Function to show coding environment
+function showCodingEnvironment(exercise) {
+    document.querySelector('.container').style.display = 'none';
+    document.getElementById('coding-environment').style.display = 'block';
+    
+    // Set exercise details
+    document.getElementById('exercise-title').textContent = exercise.title;
+    document.getElementById('exercise-description').textContent = exercise.description;
+    
+    // Set default code template
+    const editor = document.getElementById('code-editor');
+    editor.value = codeTemplates['python'];
+    
+    // Render test cases
+    renderTestCases();
+}
+
+// Function to render test cases
+function renderTestCases() {
+    const testCasesList = document.querySelector('.test-cases-list');
+    testCasesList.innerHTML = testCases.map((testCase, index) => `
+        <div class="test-case">
+            <div class="test-case-header">
+                <h4>Test Case ${index + 1}</h4>
+                <span class="test-case-status"></span>
+            </div>
+            <div class="test-case-content">
+                <div class="input">
+                    <strong>Input:</strong>
+                    <pre>${testCase.input}</pre>
+                </div>
+                <div class="expected-output">
+                    <strong>Expected Output:</strong>
+                    <pre>${testCase.expectedOutput}</pre>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Language switcher
+    document.getElementById('language-switcher').addEventListener('change', (e) => {
+        const editor = document.getElementById('code-editor');
+        editor.value = codeTemplates[e.target.value];
+    });
+
+    // Run code button
+    document.querySelector('.run-btn').addEventListener('click', () => {
+        const code = document.getElementById('code-editor').value;
+        runCode(code);
+    });
+
+    // Clear code button
+    document.querySelector('.clear-btn').addEventListener('click', () => {
+        const language = document.getElementById('language-switcher').value;
+        document.getElementById('code-editor').value = codeTemplates[language];
+    });
+    // Clear button handler
+document.querySelector('.clear-btn').addEventListener('click', () => {
+    const language = document.getElementById('language-switcher').value;
+    editor.setValue(codeTemplates[language]);
+});
+
+    // Submit code button
+    document.querySelector('.submit-btn').addEventListener('click', () => {
+        const code = document.getElementById('code-editor').value;
+        submitCode(code);
+    });
+
+    // Back to dashboard button
+    document.querySelector('.back-btn').addEventListener('click', () => {
+        document.getElementById('coding-environment').style.display = 'none';
+        document.querySelector('.container').style.display = 'block';
+    });
+
+    // Hint button
+    document.querySelector('.hint-btn').addEventListener('click', showHint);
+
+    // Add test case button
+    document.querySelector('.add-test-case-btn').addEventListener('click', addCustomTestCase);
+});
+
+// Function to run code
+function runCode(code) {
+    // Simulate code execution
+    setTimeout(() => {
+        showResults({
+            status: 'success',
+            score: 80,
+            executionTime: '120ms',
+            memoryUsed: '5.2 MB',
+            testResults: testCases.map(testCase => ({
+                input: testCase.input,
+                expectedOutput: testCase.expectedOutput,
+                actualOutput: 'Actual output here',
+                passed: Math.random() > 0.5
+            }))
+        });
+    }, 1000);
+}
+
+// Function to submit code
+function submitCode(code) {
+    // Simulate code submission
+    setTimeout(() => {
+        showResults({
+            status: 'success',
+            score: 100,
+            executionTime: '150ms',
+            memoryUsed: '5.5 MB',
+            testResults: testCases.map(testCase => ({
+                input: testCase.input,
+                expectedOutput: testCase.expectedOutput,
+                actualOutput: 'Actual output here',
+                passed: true
+            }))
+        });
+    }, 1500);
+}
+
+// Function to show results
+function showResults(results) {
+    const resultsSection = document.querySelector('.results-section');
+    resultsSection.style.display = 'block';
+
+    // Update status and score
+    const statusBadge = document.querySelector('.status-badge');
+    statusBadge.textContent = results.status.toUpperCase();
+    statusBadge.className = `status-badge status-${results.status}`;
+
+    document.querySelector('.score').textContent = `Score: ${results.score}/100`;
+
+    // Update performance metrics
+    document.querySelector('.execution-time').textContent = results.executionTime;
+    document.querySelector('.memory-used').textContent = results.memoryUsed;
+
+    // Update test results
+    const testResults = document.querySelector('.test-results');
+    testResults.innerHTML = results.testResults.map((result, index) => `
+        <div class="test-case ${result.passed ? 'passed' : 'failed'}">
+            <h4>Test Case ${index + 1}: ${result.passed ? 'Passed' : 'Failed'}</h4>
+            <div class="test-details">
+                <div>Input: ${result.input}</div>
+                <div>Expected: ${result.expectedOutput}</div>
+                <div>Actual: ${result.actualOutput}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Function to show hint
+function showHint() {
+    const hintBtn = document.querySelector('.hint-btn');
+    const hintsLeft = parseInt(hintBtn.dataset.hints);
+    
+    if (hintsLeft > 0) {
+        alert('Here is a hint for this exercise!');
+        hintBtn.dataset.hints = hintsLeft - 1;
+        hintBtn.textContent = `Hint (${hintsLeft - 1})`;
+    } else {
+        alert('No hints remaining!');
+    }
+}
+
+// Function to add custom test case
+function addCustomTestCase() {
+    const input = prompt('Enter test case input:');
+    const expectedOutput = prompt('Enter expected output:');
+    
+    if (input && expectedOutput) {
+        testCases.push({ input, expectedOutput });
+        renderTestCases();
+    }
+}
+
+// Update start exercise button click handler
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('start-btn')) {
+        const card = e.target.closest('.exercise-card');
+        const title = card.querySelector('.exercise-title').textContent;
+        const description = card.querySelector('.exercise-desc').textContent;
+        
+        showCodingEnvironment({
+            title: title,
+            description: description
+        });
+    }
+});
+</script>
+</body>
+</html>
