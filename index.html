@@ -28,7 +28,7 @@
 
         gtag('config', 'UA-140673178-2');
     </script>
-    
+
 </head>
 
 <body>
@@ -82,10 +82,13 @@
                                             class="lnr lnr-user"></i></span>About Me</a>
                             </li>
                             <li>
-                                <a href="#portfolio" class="pt-link"><span class="nav-menu-icon"><i
+                                <a href="#labs" class="pt-link"><span class="nav-menu-icon"><i
                                             class="lnr lnr-briefcase"></i></span>Labs</a>
                             </li>
-
+                            <li>
+                                <a href="#portfolio" class="pt-link"><span class="nav-menu-icon"><i
+                                            class="lnr lnr-briefcase"></i></span>Portfolio</a>
+                            </li>
                             <li>
                                 <a href="#contact" class="pt-link"><span class="nav-menu-icon"><i
                                             class="lnr lnr-envelope"></i></span>Contact</a>
@@ -285,8 +288,8 @@
             </section>
             <!--About Section Start-->
 
-            <!--Porfolio Section Start-->
-            <section id="portfolio" class="portfolio-section pt-page">
+            <!--labs Section Start-->
+            <section id="labs" class="portfolio-section pt-page">
                 <div class="section-container">
 
                     <!--Page Heading-->
@@ -318,33 +321,33 @@
                             /* Khung viền */
                         }
                     </style>
-                    <!--Portfolio Items-->
+                    <!--labs Items-->
                     <div class="row portfolio-items mb-50">
-                        <!--Portfolio Item-->
+                        <!--labs Item-->
                         <div class="item col-lg-12 col-sm-6 Lab1">
                             <iframe src="./Lab/lab1/index.html" title="Iframe Example"></iframe>
                         </div>
-                        <!--Portfolio Item Lab2-->
+                        <!--labs Item Lab2-->
                         <div class="item col-lg-12 col-sm-6 Lab2">
                             <iframe src="./Lab/lab2/index.html" title="Iframe Example"></iframe>
                         </div>
 
-                        <!--Portfolio Item Lab3-->
+                        <!--labs Item Lab3-->
                         <div class="item col-lg-12 col-sm-6 Lab3">
                             <iframe src="./Lab/lab3/index.html" title="Iframe Example"></iframe>
                         </div>
 
-                        <!--Portfolio Item Lab4-->
+                        <!--labs Item Lab4-->
                         <div class="item col-lg-12 col-sm-6 Lab4">
                             <iframe src="./Lab/lab4/index.html" title="Iframe Example"></iframe>
                         </div>
 
-                        <!--Portfolio Item Lab5-->
+                        <!--labs Item Lab5-->
                         <div class="item col-lg-12 col-sm-6 Lab5">
                             <iframe src="./Lab/lab5/index.html" title="Iframe Example"></iframe>
                         </div>
 
-                        <!--Portfolio Item Lab6-->
+                        <!--labs Item Lab6-->
                         <div class="item col-lg-12 col-sm-6 Lab6">
                             <style>
                                 #content {
@@ -392,6 +395,7 @@
                                     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
                                     /* Giảm đổ bóng */
                                 }
+
                                 .custom-button.red {
                                     background-color: #00A3E1;
                                 }
@@ -399,19 +403,15 @@
                                 .custom-button.red:hover {
                                     background-color: #077ead;
                                 }
-                                
                             </style>
                             <h1>Repositories</h1>
-                            <button class="custom-button red" onclick="loadIframe('./lab/lab6/req5+6.html')">Req5+6</button>
+                            <button class="custom-button red"
+                                onclick="loadIframe('./lab/lab6/req5+6.html')">Req5+6</button>
                             <button class="custom-button red" onclick="loadIframe('./lab/lab6/req7.html')">Req7</button>
                             <button class="custom-button red" onclick="loadIframe('./lab/lab6/req8.html')">Req8</button>
 
-                            <iframe 
-    id="content" 
-    style="height: 660px;" 
-    src="./lab/lab6/req5+6.html" 
-    frameborder="1">
-</iframe>
+                            <iframe id="content" style="height: 660px;" src="./lab/lab6/req5+6.html" frameborder="1">
+                            </iframe>
                         </div>
                         <script>
                             function loadContent(file) {
@@ -431,8 +431,178 @@
                                 document.getElementById('content').src = file;
                             }
                         </script>
-                        <!-- Portfolio Item
-                        <div class="item col-lg-12 col-sm-6 nodejs">
+
+                    </div>
+                </div>
+            </section>
+            <!--labs Section End-->
+            <!--Porfolio Section Start-->
+            <section id="portfolio" class="portfolio-section pt-page">
+                <div class="section-container">
+
+                    <!--Page Heading-->
+                    <div class="page-heading">
+                        <span class="icon"><i class="lnr lnr-briefcase"></i></span>
+                        <h2>My Project</h2>
+                        </h2>
+                    </div>
+
+                    <div class="row">
+                        <!--Portfolio Filter-->
+                        <div class="col-md-6 portfolio-filter text-center">
+                            <ul>
+                                <li class="active" data-filter="*">All</li>
+                                <li data-filter=".asp">ASP.NET MVC</li>
+                                <li data-filter=".wp">WordPress</li>
+                                <li data-filter=".nodejs">Node JS</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Portfolio Items-->
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 wp">
+                            <a class="web-link" href="https://thaylongtoeic.com/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-3.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Thay Long toeic Class</h4>
+                                        <p>WordPress</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-12 wp">
+                            <a class="web-link" href="https://sauanla.com/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-5.jpg" alt="">
+                                    <figcaption>
+                                        <h4>My Blog</h4>
+                                        <p>WordPress</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-12 wp">
+                            <a class="web-link" href="https://musiclight.com.vn/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-4.jpg" alt="">
+                                    <figcaption>
+                                        <h4>MusicLight School</h4>
+                                        <p>WordPress</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        <!--END ROW-->
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-12 asp">
+                            <a class="ajax-link" href="./page/patient-management.html">
+                                <figure>
+                                    <img src="img/portfolio/img-1.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Patient Management</h4>
+                                        <p>ASP.NET MVC</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 nodejs">
+                            <a class="web-link" href="http://data.sauanla.com/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-2.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Shope Data</h4>
+                                        <p>Node JS</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 aps">
+                            <a class="web-link" href="http://chotour.vn/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-8.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Tour Market</h4>
+                                        <p>ASP.NET MVC</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 asp">
+                            <a class="web-link" href="https://ddpheadhunter.vn/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-9.jpg" alt="">
+                                    <figcaption>
+                                        <h4>DDP Headhunter</h4>
+                                        <p>ASP.NET MVC</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 asp">
+                            <a class="web-link" href="http://www.hngreentour.com/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-9.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Hanoi Green Tour</h4>
+                                        <p>Website</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 asp">
+                            <a class="web-link" href="http://117.4.240.104:8080/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-6.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Open Software</h4>
+                                        <p>ASP.NET MVC</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6">
+                            <a class="video-link" href="https://www.youtube.com/watch?v=egkWlqH8fzs">
+                                <figure>
+                                    <img src="img/portfolio/img-10.jpg" alt="">
+                                    <figcaption>
+                                        <h4>My channel</h4>
+                                        <p>Youtube</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-4 col-sm-6 asp">
+                            <a class="web-link" href="https://movie-sauanla.azurewebsites.net/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/img-11.jpg" alt="">
+                                    <figcaption>
+                                        <h4>Cinema Online</h4>
+                                        <p>ASP.NET MVC</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6">
                             <a class="web-link" href="https://dinhphuc.github.io/sleep/" target="_blank">
                                 <figure>
                                     <img src="img/portfolio/img-12.jpg" alt="">
@@ -442,12 +612,11 @@
                                     </figcaption>
                                 </figure>
                             </a>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </section>
             <!--Porfolio Section End-->
-
             <!--Contact Section Start-->
             <section id="contact" class="contact-section pt-page">
                 <div class="section-container">
