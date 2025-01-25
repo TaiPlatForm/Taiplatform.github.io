@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <a href="#portfolio" class="pt-link"><span class="nav-menu-icon"><i
-                                            class="lnr lnr-briefcase"></i></span>Portfolio</a>
+                                            class="lnr lnr-briefcase"></i></span>Result</a>
                             </li>
                             <li>
                                 <a href="#contact" class="pt-link"><span class="nav-menu-icon"><i
@@ -443,177 +443,380 @@
                     <!--Page Heading-->
                     <div class="page-heading">
                         <span class="icon"><i class="lnr lnr-briefcase"></i></span>
-                        <h2>My Project</h2>
+                        <h2>Result</h2>
                         </h2>
                     </div>
 
-                    <div class="row">
-                        <!--Portfolio Filter-->
-                        <div class="col-md-6 portfolio-filter text-center">
-                            <ul>
-                                <li class="active" data-filter="*">All</li>
-                                <li data-filter=".asp">ASP.NET MVC</li>
-                                <li data-filter=".wp">WordPress</li>
-                                <li data-filter=".nodejs">Node JS</li>
-                            </ul>
+                    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #60a5fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .dark .card {
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .progress-bar {
+            width: 35%;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 1.5s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .py-12 {
+    padding-top: 0rem;
+    padding-bottom: 3rem;
+}
+    </style>
+</head>
+<body>
+    <button class="theme-toggle p-2 rounded-full bg-gray-200 dark:bg-gray-700" onclick="toggleTheme()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+            </path>
+        </svg>
+    </button>
+
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <div class="card p-8 mb-8">
+            <h1 class="text-3xl font-bold mb-4">Chu Tấn Tài</h1>
+            <p class="text-gray-600 dark:text-gray-300 mb-2">MSSV: 23130280</p>
+            <div class="progress-bar mt-4"></div>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">Đánh giá: 35%</p>
+        </div>
+
+
+        <div class="card p-8 mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Làm Việc Nhóm: Thách Thức, Kinh Nghiệm, Và Bài Học Đáng Nhớ</h2>
+            <ul class="list-disc list-inside space-y-2">
+                <li><b>Sử dụng GitHub: </b>Biết cách dùng GitHub để quản lý code, tạo branch, và merge code khi làm việc nhóm.</li>
+                <li><b>Quản lý và vận hành code: </b>Hiểu rõ hơn về cách tổ chức và chạy code HTML, CSS, JavaScript một cách hiệu quả.</li>
+                <li><b>Kiểm soát cảm xúc: </b>Học được cách bình tĩnh, lắng nghe, và tôn trọng ý kiến của người khác khi làm việc nhóm.</li>
+                <li><b>Tự học và tìm kiếm: </b>Rèn luyện được kỹ năng tự học, tự tìm kiếm thông tin, và giải quyết vấn đề một cách độc lập.</li>
+                <li><b>Giải quyết vấn đề: </b>Biết cách phân tích, tìm giải pháp, và thích nghi khi gặp khó khăn trong dự án.</li>
+            </ul>
+        </div>
+
+        <div class="card p-8">
+            <h2 class="text-2xl font-semibold mb-4">Tổng Kết Công Việc</h2>
+            <div class="space-y-4">
+                <div>
+                    <ul class="list-disc list-inside">
+                        <li><b>Group 11 Web: </b></li>
+                        <li>
+                            Trang 
+                            <a href="https://hci2024group11.github.io/Group11_Web/groupDiary.html" class="text-blue-500 hover:underline">
+                                group diary
+                            </a>
+                        </li>
+                        <li>
+                            Trang 
+                            <a href="https://hci2024group11.github.io/Group11_Web/result.html" class="text-blue-500 hover:underline">
+                                result
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="list-disc list-inside">
+                        <li><b>Project Web: </b></li>
+                        <li>
+                            Trang 
+                            <a href="https://hci2024group11.github.io/Project_Web/auth/" target="_blank" class="text-blue-500 hover:underline">
+                                login
+                            </a>
+                        </li>
+                        <li>
+                            Trang 
+                            <a href="https://hci2024group11.github.io/Project_Web/courses/" target="_blank" class="text-blue-500 hover:underline">
+                                courses
+                            </a>
+                        </li>
+                        <li>
+                            Trang 
+                            <a href="https://hci2024group11.github.io/Project_Web/flashcards/me/" target="_blank" class="text-blue-500 hover:underline">
+                                flashcards
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+        }
+
+        // Subtle background animation
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.zIndex = '-1';
+        canvas.style.opacity = '0.5';
+        document.body.appendChild(canvas);
+
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = Math.random() * 0.2 - 0.1;
+                this.vy = Math.random() * 0.2 - 0.1;
+                this.size = Math.random() * 2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0) this.x = canvas.width;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.y < 0) this.y = canvas.height;
+                if (this.y > canvas.height) this.y = 0;
+            }
+
+            draw() {
+                ctx.fillStyle = document.body.classList.contains('dark') ? '#ffffff10' : '#00000010';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 50; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+    </br>
+
+    <div class="row">
+        <!--Portfolio Filter-->
+        <div class="col-md-12 portfolio-filter text-center">
+            <ul>
+                <li class="active" data-filter="*">All</li>
+                <li data-filter=".groupDiary">group Diary</li>
+                <li data-filter=".result">result</li>
+                <li data-filter=".login">login</li>
+                <li data-filter=".courses">courses</li>
+                <li data-filter=".flashcards">flashcards</li>
+            </ul>
+        </div>
+    </div>
+                    <!--Portfolio Items-->
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 groupDiary">
+                            <a class="web-link" href="https://hci2024group11.github.io/Group11_Web/groupDiary.html" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/groupDiary.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang group diary</h4>
+                                        <p>Group 11 Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+                    <!--Portfolio Items-->
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 result">
+                            <a class="web-link" href="https://hci2024group11.github.io/Group11_Web/result.html" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/result.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang result</h4>
+                                        <p>Group 11 Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
                         </div>
                     </div>
 
                     <!--Portfolio Items-->
                     <div class="row portfolio-items mb-50">
                         <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 wp">
-                            <a class="web-link" href="https://thaylongtoeic.com/" target="_blank">
+                        <div class="item col-lg-12 col-sm-6 login">
+                            <a class="web-link" href="https://hci2024group11.github.io/Group11_Web/result.html" target="_blank">
                                 <figure>
-                                    <img src="img/portfolio/img-3.jpg" alt="">
+                                    <img src="img/portfolio/login.png" alt="">
                                     <figcaption>
-                                        <h4>Thay Long toeic Class</h4>
-                                        <p>WordPress</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-12 wp">
-                            <a class="web-link" href="https://sauanla.com/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-5.jpg" alt="">
-                                    <figcaption>
-                                        <h4>My Blog</h4>
-                                        <p>WordPress</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-12 wp">
-                            <a class="web-link" href="https://musiclight.com.vn/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-4.jpg" alt="">
-                                    <figcaption>
-                                        <h4>MusicLight School</h4>
-                                        <p>WordPress</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <!--END ROW-->
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-12 asp">
-                            <a class="ajax-link" href="./page/patient-management.html">
-                                <figure>
-                                    <img src="img/portfolio/img-1.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Patient Management</h4>
-                                        <p>ASP.NET MVC</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 nodejs">
-                            <a class="web-link" href="http://data.sauanla.com/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-2.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Shope Data</h4>
-                                        <p>Node JS</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 aps">
-                            <a class="web-link" href="http://chotour.vn/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-8.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Tour Market</h4>
-                                        <p>ASP.NET MVC</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 asp">
-                            <a class="web-link" href="https://ddpheadhunter.vn/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-9.jpg" alt="">
-                                    <figcaption>
-                                        <h4>DDP Headhunter</h4>
-                                        <p>ASP.NET MVC</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 asp">
-                            <a class="web-link" href="http://www.hngreentour.com/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-9.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Hanoi Green Tour</h4>
-                                        <p>Website</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 asp">
-                            <a class="web-link" href="http://117.4.240.104:8080/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-6.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Open Software</h4>
-                                        <p>ASP.NET MVC</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6">
-                            <a class="video-link" href="https://www.youtube.com/watch?v=egkWlqH8fzs">
-                                <figure>
-                                    <img src="img/portfolio/img-10.jpg" alt="">
-                                    <figcaption>
-                                        <h4>My channel</h4>
-                                        <p>Youtube</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-4 col-sm-6 asp">
-                            <a class="web-link" href="https://movie-sauanla.azurewebsites.net/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-11.jpg" alt="">
-                                    <figcaption>
-                                        <h4>Cinema Online</h4>
-                                        <p>ASP.NET MVC</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        </div>
-                        <!--Portfolio Item-->
-                        <div class="item col-lg-12 col-sm-6">
-                            <a class="web-link" href="https://dinhphuc.github.io/sleep/" target="_blank">
-                                <figure>
-                                    <img src="img/portfolio/img-12.jpg" alt="">
-                                    <figcaption>
-                                        <h4>You should wake up at?</h4>
-                                        <p>JavaScript</p>
+                                        <h4>Trang login</h4>
+                                        <p>Project Web</p>
                                     </figcaption>
                                 </figure>
                             </a>
                         </div>
                     </div>
+
+                    <!--Portfolio Items-->
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 courses">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/courses/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/course.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang courses</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 courses">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/courses/series/Practical-english-ted.html" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/course1.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang courses: Practical English</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                     <!--Portfolio Items-->
+                     <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 flashcards">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/flashcards/discover/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/flashcards.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang flashcards: Explore</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                     <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 flashcards">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/flashcards/me/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/flashcards1.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang flashcards: My word list</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                     <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 flashcards">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/flashcards/lists/8683/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/flashcards2.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang flashcards: Flashcards: English vocabulary</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row portfolio-items mb-50">
+                        <!--Portfolio Item-->
+                        <div class="item col-lg-12 col-sm-6 flashcards">
+                            <a class="web-link" href="https://hci2024group11.github.io/Project_Web/flashcards/lists/8683/review/" target="_blank">
+                                <figure>
+                                    <img src="img/portfolio/flashcards3.png" alt="">
+                                    <figcaption>
+                                        <h4>Trang flashcards: Practice flashcards</h4>
+                                        <p>Project Web</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
             <!--Porfolio Section End-->
